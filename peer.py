@@ -6,6 +6,7 @@ import time
 lock = threading.Lock()
 
 def act_as_server(host, port):
+    print("I am a server")
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host, port))
     print("Socket binded to :" + host + " : " + str(port) )
@@ -39,17 +40,18 @@ def send_data(host, port) :
 
 def Main() :
     host = "127.0.0.1"
-    port = 12345
+    c_port = 12345
+    s_port = 12346
     args_parser = argparse.ArgumentParser()
     args_parser.add_argument('--opmode', help='s or c', required=True)
     args = args_parser.parse_args()
     opMode = args.opmode
-    if opMode == 's' :
-        act_as_server(host, port)
-    else :
-        act_as_client(host, port)
+    
+    act_as_client(host, c_port)
+    act_as_server(host, s_port)
 
 def act_as_client(host, port):
+    print("I am a client")
     thread = threading.Thread(target=send_data, args=(host, port))
     thread.start()
 
