@@ -43,7 +43,7 @@ def Main() :
     c_port = 12345
     s_port = 12346
     args_parser = argparse.ArgumentParser()
-    args_parser.add_argument('--opmode', help='s or c', required=True)
+    args_parser.add_argument('--listening port', help='s or c', required=True)
     args = args_parser.parse_args()
     opMode = args.opmode
     
