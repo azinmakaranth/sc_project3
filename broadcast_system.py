@@ -5,6 +5,7 @@ import threading
 import time
 import logging
 
+#Rakesh
 broadcast_port = 33341
 pair_list = {}
 
@@ -50,6 +51,7 @@ def server_side(host, BPORT, LPORT):
     while True:
         server.sendto(encode_data, ('<broadcast>', BPORT))
         time.sleep(5)
+#Rakesh
 
 #Azin -- Send data on a destination listening port
 # iterate the peerList and sent message
@@ -81,6 +83,7 @@ def handleRecievedData( data) :
     print("Recieved data ->" +str( data))
 #Azin
 
+#Rakesh
 my_parser = argparse.ArgumentParser(description='command to execute the ./server script')
 my_parser.add_argument('--listen_port', help='listening_port', required=True)
 my_parser.add_argument('--listen_port_of_neighbour', help='listening_port_of_neighbour', required=True)
@@ -92,6 +95,7 @@ serverThread = threading.Thread(target=server_side, args=(host, broadcast_port, 
 clientThread = threading.Thread(target=client_side, args=(broadcast_port,))
 serverThread.start()
 clientThread.start() 
+#Rakesh
 #Azin --- Testing
 test_list_port = args.listen_port_of_neighbour
 alertsListenerThread = threading.Thread(target=broadcastListener, args=( int(args.listen_port), handleRecievedData, ))
